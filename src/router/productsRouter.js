@@ -2,50 +2,53 @@ import { Suspense, lazy } from "react";
 import { Navigate } from "react-router-dom";
 
 const Loading = <div>Loading....</div>;
-const TodoList = lazy(() => import("../pages/todo/ListPage"));
-const TodoRead = lazy(() => import("../pages/todo/ReadPage"));
-const TodoAdd = lazy(() => import("../pages/todo/AddPage"));
-const TodoModify = lazy(() => import("../pages/todo/ModifyPage"));
+const ProductsList = lazy(() => import("../pages/products/ListPage"));
 
-const todoRouter = () => {
+const ProductsAdd = lazy(() => import("../pages/products/AddPage"));
+
+const ProductRead = lazy(() => import("../pages/products/ReadPage"));
+
+const ProductModify = lazy(() => import("../pages/products/ModifyPage"));
+
+const productsRouter = () => {
   return [
     {
       path: "list",
       element: (
         <Suspense fallback={Loading}>
-          <TodoList />
+          <ProductsList />
         </Suspense>
       ),
     },
     {
       path: "",
-      element: <Navigate replace to="list" />,
-    },
-    {
-      path: "read/:tno",
-      element: (
-        <Suspense fallback={Loading}>
-          <TodoRead />
-        </Suspense>
-      ),
+      element: <Navigate replace to="/products/list" />,
     },
     {
       path: "add",
       element: (
         <Suspense fallback={Loading}>
-          <TodoAdd />
+          <ProductsAdd />
         </Suspense>
       ),
     },
     {
-      path: "modify/:tno",
+      path: "read/:pno",
       element: (
         <Suspense fallback={Loading}>
-          <TodoModify />
+          <ProductRead />
+        </Suspense>
+      ),
+    },
+    {
+      path: "modify/:pno",
+      element: (
+        <Suspense fallback={Loading}>
+          <ProductModify />
         </Suspense>
       ),
     },
   ];
 };
 
-export default todoRouter;
+export default productsRouter;
