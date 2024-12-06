@@ -11,7 +11,7 @@ const initState = {
 };
 
 const ReadComponent = ({ tno }) => {
-  const [todo, setTodo] = useState(initState); //아직 todo는 사용하지 않음
+  const [todo, setTodo] = useState(initState);
 
   const { moveToList, moveToModify } = useCustomMove();
 
@@ -23,14 +23,13 @@ const ReadComponent = ({ tno }) => {
   }, [tno]);
 
   return (
-    <div className="border-2 border-sky-200 mt-10 m-2 p-4 ">
+    <div className="border-2 border-sky-200 mt-10 m-2 p-4">
       {makeDiv("Tno", todo.tno)}
       {makeDiv("Writer", todo.writer)}
       {makeDiv("Title", todo.title)}
       {makeDiv("Due Date", todo.dueDate)}
       {makeDiv("Complete", todo.complete ? "Completed" : "Not Yet")}
 
-      {/* buttons.........start */}
       <div className="flex justify-end p-4">
         <button
           type="button"
@@ -39,10 +38,9 @@ const ReadComponent = ({ tno }) => {
         >
           List
         </button>
-
         <button
           type="button"
-          className="rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
+          className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
           onClick={() => moveToModify(tno)}
         >
           Modify
@@ -51,7 +49,6 @@ const ReadComponent = ({ tno }) => {
     </div>
   );
 };
-
 const makeDiv = (title, value) => (
   <div className="flex justify-center">
     <div className="relative mb-4 flex w-full flex-wrap items-stretch">

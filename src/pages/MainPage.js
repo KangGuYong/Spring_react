@@ -1,11 +1,11 @@
 import BasicLayout from "../layouts/BasicLayout";
 
-const MainPage = () => {
+const Mainpage = () => {
   return (
     <BasicLayout>
-      <div className=" text-3xl">Main Page</div>
+      <div className="text-3xl">Mainpage</div>
     </BasicLayout>
   );
 };
 
-export default MainPage;
+export default Mainpage;
